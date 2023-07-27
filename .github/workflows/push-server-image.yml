@@ -38,5 +38,5 @@ jobs:
         context: .
         file: manifests/Dockerfile-server
         push: true
-        tags: ghcr.io/knight42/krelay-server:${{ env.IMAGE_TAG }}
+        tags: ghcr.io/helmuthb/krelay-server:${{ env.IMAGE_TAG }}
         platforms: linux/amd64,linux/arm/v7,linux/arm64
