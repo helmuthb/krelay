@@ -40,7 +40,7 @@ PLATFORM_LIST = \
         darwin-arm64 \
         linux-amd64 \
         linux-arm64 \
-		windows-amd64
+        windows-amd64
 darwin-%:
 	GOARCH=$* GOOS=darwin $(GOBUILD) -o $(NAME)_$(VERSION)_$@/$(NAME) ./cmd/client
 
@@ -48,7 +48,7 @@ linux-%:
 	GOARCH=$* GOOS=linux $(GOBUILD) -o $(NAME)_$(VERSION)_$@/$(NAME) ./cmd/client
 
 windows-%:
-	GOARCH=$* GOOS=windows $(GOBUILD) -o $(NAME)_$(VERSION)_$@/$(NAME) ./cmd/client
+	GOARCH=$* GOOS=windows $(GOBUILD) -o $(NAME)_$(VERSION)_$@/$(NAME).exe ./cmd/client
 
 gz_releases=$(addsuffix .tar.gz, $(PLATFORM_LIST))
 $(gz_releases): %.tar.gz : %
