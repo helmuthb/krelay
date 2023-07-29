@@ -52,7 +52,13 @@ windows-%:
 
 gz_releases=$(addsuffix .tar.gz, $(PLATFORM_LIST))
 $(gz_releases): %.tar.gz : %
-	tar czf $(NAME)_$(VERSION)_$@ -C $(NAME)_$(VERSION)_$</ ../LICENSE $(NAME)
+	case $@ in windows-*)
+	  tar czf $(NAME)_$(VERSION)_$@ -C $(NAME)_$(VERSION)_$</ ../LICENSE $(NAME).exe
+	  ;;
+	*)
+	  tar czf $(NAME)_$(VERSION)_$@ -C $(NAME)_$(VERSION)_$</ ../LICENSE $(NAME)
+	  ;;
+	esac
 	sha256sum $(NAME)_$(VERSION)_$@ > $(NAME)_$(VERSION)_$@.sha256
 
 .PHONY: releases
